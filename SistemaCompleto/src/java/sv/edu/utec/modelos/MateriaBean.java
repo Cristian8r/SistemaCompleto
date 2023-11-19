@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import sv.edu.utec.beans.MateriaEntityFacadeLocal;
+import sv.edu.utec.beans.MateriaEntityFacade;
 import sv.edu.utec.entidades.MateriaEntity;
 
 /**
@@ -25,7 +25,7 @@ import sv.edu.utec.entidades.MateriaEntity;
 public class MateriaBean implements Serializable {
 
     @EJB
-    private MateriaEntityFacadeLocal materiaFacade;
+    private MateriaEntityFacade materiaFacade;
     
     private List<MateriaEntity> listaMaterias;
     

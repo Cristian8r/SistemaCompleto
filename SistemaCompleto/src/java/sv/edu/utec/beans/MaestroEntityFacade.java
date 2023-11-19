@@ -14,7 +14,7 @@ import sv.edu.utec.entidades.MaestroEntity;
  * @author brand
  */
 @Stateless
-public class MaestroEntityFacade extends AbstractFacade<MaestroEntity> implements MaestroEntityFacadeLocal {
+public class MaestroEntityFacade extends AbstractFacade<MaestroEntity> {
 
     @PersistenceContext(unitName = "SistemaCompletoPU")
     private EntityManager em;

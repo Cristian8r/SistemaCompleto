@@ -14,7 +14,7 @@ import sv.edu.utec.entidades.MateriaEntity;
  * @author brand
  */
 @Stateless
-public class MateriaEntityFacade extends AbstractFacade<MateriaEntity> implements MateriaEntityFacadeLocal {
+public class MateriaEntityFacade extends AbstractFacade<MateriaEntity> {
 
     @PersistenceContext(unitName = "SistemaCompletoPU")
     private EntityManager em;
