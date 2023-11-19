@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo">
+        Listado Registros.
+    </ui:define>
+
+    <ui:define name="contenido">
+        <div class="card">
+            <h:form id="form">
+                <!--Para la gestion de mensajes-->
+                <p:growl id="menssages" showDetail="true"/>
+
+                <p:dataTable id="dt-materias" widgetVar="dtMaterias" value="#{materiaBean.listaMaterias}" var="item" 
+                             showGridlines="true" styleClass="materias-table" selection="#{materiaBean.materiaSeleccionada}"
+                             rowKey="#{item.idMateria}" paginator="true" paginatorPosition="bottom" rowSelectMode="add">
+                    <f:facet name="header">
+                        <div class="materias-table-header">
+                            <span class="fw-bold">LISTADO DE REGISTROS</span>
+                            <span class="filter-container ui-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <p:inputText id="globalFilter" onkeyup="PF('dtMaterias').filter()" placeholder="Buscar..."/>
+                            </span>
+                        </div>
+                    </f:facet>
+                    <p:column headerText="Codigo de Registro" sortBy="#{item.idMateria}" filterBy="#{header.idRegistro}">
+                        <h:outputText value="#{item.idRegistro}"/>
+                    </p:column>
+                    <p:column headerText="Fecha" sortBy="#{item.materia}" filterBy="#{header.fecha}">
+                        <h:outputText value="#{item.fecha}"/>
+                    </p:column>
+                    <p:column headerText="Materia" sortBy="#{item.unidadesValorativas}" filterBy="#{header.materia}">
+                        <h:outputText value="#{item.materia}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Maestro" sortBy="#{item.maestro}" filterBy="#{header.maestro}">
+                        <h:outputText value="#{item.maestro}"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton icon="pi pi-pencil" styleClass="edit-button rounded-button ui-button-success"
+                                         update=":dialogs:manage-materia-content" oncomplete="PF('manageMateriaDialog').show()"
+                                         process="@this">
+                            <p:resetInput target=":dialogs:manage-materia-content"/>
+                            <f:setPropertyActionListener value="#{item}" target="#{materiaBean.materia}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+            <!--Formulario modal para realizar la modificacion de una materia--> 
+            <h:form id="dialog">
+                <p:dialog header="Datos de Materia" showEffect="fade" widgetVar="manageMateriaDialog"
+                          responsive="true">
+                    <p:outputPanel rendered="manage-materia-content" class="ui-fluid">
+
+                        <p:outputPanel rendered="#{not empty materiaBean.materia}">
+                            <div class="field">
+                                <p:outputLabel for="materia">Nombre Materia</p:outputLabel>
+                                <p:inputText id="materia" value="#{materiaBean.materia.materia}" required="true"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="unidVal">Unidades Valorativas</p:outputLabel>
+                                <p:inputText id="unidVal" value="#{materiaBean.materia.unidadesValorativas}" required="true"/>
+                            </div>
+                        </p:outputPanel>
+
+                    </p:outputPanel>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" icon="pi pi-check" actionListener="#{materiaBean.modificarMateria()}"
+                                         update="manage-materia-content" process="manage-materia-content @this"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('manageMateriaDialog').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
+            </h:form>
+        </div>
+         #{item.materia}
+    </ui:define>
+
+</ui:composition>

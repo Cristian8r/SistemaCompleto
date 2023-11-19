@@ -31,7 +31,7 @@
                             <ul class="dropdown-menu">
                                 <!-- 
                                 <li><a class="dropdown-item" href="/materias/nuevaMateria">Crear materia</a></li>
-                                <li><a class="dropdown-item" href="#">Ver lista de materias</a></li>  
+                               <li><a class="dropdown-item" href="#">Ver lista de materias</a></li>  
                                  -->
                                  <li><h:link outcome="/materias/nuevaMateria" value="Crear materia"/></li>
                                  <li><h:link outcome="/materias/listarMaterias" value="Ver lista de materia"/></li>
@@ -49,8 +49,12 @@
                             <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                aria-expanded="false">Registros </a>
                             <ul class="dropdown-menu">
+                                <!--
                                 <li><a class="dropdown-item" href="#">Crear registro</a></li>
-                                <li><a class="dropdown-item" href="#">Ver lista de registros</a></li>                                   
+                                <li><a class="dropdown-item" href="#">Ver lista de registros</a></li> 
+                                -->
+                                 <li><h:link outcome="/registros/nuevoRegistro" value="Crear registro"/></li>
+                                 <li><h:link outcome="/registros/listarRegistros" value="Ver lista de registros"/></li>
                             </ul>
                         </li>
                     </ul>                    
