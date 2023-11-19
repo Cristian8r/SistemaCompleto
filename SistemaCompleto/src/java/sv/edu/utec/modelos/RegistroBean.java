@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import sv.edu.utec.beans.RegistroEntityFacade;
+import sv.edu.utec.beans.RegistroEntityFacadeLocal;
 import sv.edu.utec.entidades.MaestroEntity;
 import sv.edu.utec.entidades.MateriaEntity;
 import sv.edu.utec.entidades.RegistroEntity;
@@ -24,7 +24,7 @@ import sv.edu.utec.entidades.RegistroEntity;
 public class RegistroBean implements Serializable {
 
     @EJB
-    private RegistroEntityFacade registroFacade;
+    private RegistroEntityFacadeLocal registroFacade;
     
     private List<RegistroEntity> listaRegistros;
     private RegistroEntity registro;

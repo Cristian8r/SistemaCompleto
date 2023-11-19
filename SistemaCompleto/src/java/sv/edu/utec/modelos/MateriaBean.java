@@ -7,12 +7,13 @@ package sv.edu.utec.modelos;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import sv.edu.utec.beans.MateriaEntityFacade;
+import sv.edu.utec.beans.MateriaEntityFacadeLocal;
 import sv.edu.utec.entidades.MateriaEntity;
 
 /**
@@ -24,7 +25,7 @@ import sv.edu.utec.entidades.MateriaEntity;
 public class MateriaBean implements Serializable {
 
     @EJB
-    private MateriaEntityFacade materiaFacade;
+    private MateriaEntityFacadeLocal materiaFacade;
     
     private List<MateriaEntity> listaMaterias;
     
@@ -39,6 +40,7 @@ public class MateriaBean implements Serializable {
 
     public List<MateriaEntity> getListaMaterias() {
         this.listaMaterias = materiaFacade.findAll();
+         System.out.println("getListaMaterias() ejecutado. Número de materias: " + listaMaterias.size());
         return listaMaterias;
     }
 
@@ -71,6 +73,7 @@ public class MateriaBean implements Serializable {
     @PostConstruct
     public void init(){
         this.materia = new MateriaEntity();
+        this.materiaSeleccionada = new ArrayList<>();
     }
     
     public String insertarMateria(){

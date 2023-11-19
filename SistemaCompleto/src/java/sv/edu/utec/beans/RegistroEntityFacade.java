@@ -14,7 +14,7 @@ import sv.edu.utec.entidades.RegistroEntity;
  * @author brand
  */
 @Stateless
-public class RegistroEntityFacade extends AbstractFacade<RegistroEntity> {
+public class RegistroEntityFacade extends AbstractFacade<RegistroEntity> implements RegistroEntityFacadeLocal {
 
     @PersistenceContext(unitName = "SistemaCompletoPU")
     private EntityManager em;

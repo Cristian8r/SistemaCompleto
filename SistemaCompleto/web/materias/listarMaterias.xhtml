@@ -20,7 +20,6 @@
                 <p:dataTable id="dt-materias" widgetVar="dtMaterias" value="#{materiaBean.listaMaterias}" var="item" 
                              showGridlines="true" styleClass="materias-table" selection="#{materiaBean.materiaSeleccionada}"
                              rowKey="#{item.idMateria}" paginator="true" paginatorPosition="bottom" rowSelectMode="add">
-
                     <f:facet name="header">
                         <div class="materias-table-header">
                             <span class="fw-bold">LISTADO MATERIA</span>
@@ -79,6 +78,7 @@
                 </p:dialog>
             </h:form>
         </div>
+         #{item.materia}
     </ui:define>
 
 </ui:composition>

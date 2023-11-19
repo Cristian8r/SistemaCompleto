@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import sv.edu.utec.beans.MaestroEntityFacade;
+import sv.edu.utec.beans.MaestroEntityFacadeLocal;
 import sv.edu.utec.entidades.MaestroEntity;
 
 /**
@@ -22,7 +22,7 @@ import sv.edu.utec.entidades.MaestroEntity;
 public class MaestroBean implements Serializable {
 
     @EJB
-   private MaestroEntityFacade maestroFacade;
+   private MaestroEntityFacadeLocal maestroFacade;
    
    private List<MaestroEntity> listaMaestros;
    private MaestroEntity maestro;
